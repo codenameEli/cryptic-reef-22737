@@ -12,9 +12,11 @@ It was built using Node.js, Express, Angular 2, and mongoDB.
 
 Clone the repo
 
-Run npm install
+Run `npm install`
 
-Open to [rLocalhost](http://localhost:4200)
+Run `node server.js`
+
+Open to [Localhost](http://localhost:5000)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
