@@ -1,16 +1,20 @@
 # Kato
 
 ## Getting Up and Running quick
-Short Version:
+### Short Version:
 Visit the [Heroku App](https://cryptic-reef-22737.herokuapp.com/) to get check it out and play around.
+
 https://cryptic-reef-22737.herokuapp.com/
 
 It was built using Node.js, Express, Angular 2, and mongoDB.
 
-Longer Version:
+### Longer Version:
+
 Clone the repo
+
 Run npm install
-Open to [Localhost](http://localhost:4200)
+
+Open to [rLocalhost](http://localhost:4200)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
