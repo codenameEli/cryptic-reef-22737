@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
 import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'movie-list',
