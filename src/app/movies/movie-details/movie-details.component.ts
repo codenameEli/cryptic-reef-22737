@@ -23,8 +23,7 @@ export class MovieDetailsComponent {
 
   createMovie(movie: Movie) {
     this.movieService.createMovie(movie).then((movie: Movie) => {
-      console.log(movie);
-      // this.createHandler(movie);
+      this.createHandler(movie);
     });
   }
 

@@ -35,16 +35,6 @@ function handleError(res, reason, message, code) {
   res.status(code || 500).json({"error": message});
 }
 
-app.get('/', function(request, response) {
-  db.collection(MOVIES_COLLECTION).find({}).toArray(function(err, docs) {
-    if (err) {
-      handleError(res, err.message, "Failed to get movies.");
-    } else {
-      res.status(200).json(docs);
-    }
-  });
-});
-
 /*  "/api/movies"
  *    GET: finds all movies
  *    POST: creates a new movie
@@ -63,10 +53,6 @@ app.get("/api/movies", function(req, res) {
 app.post("/api/movies", function(req, res) {
   var newMovie = req.body;
   newMovie.createDate = new Date();
-
-  if (!req.body.title) {
-    handleError(res, "Invalid user input", "Must provide a title.", 400);
-  }
 
   db.collection(MOVIES_COLLECTION).insertOne(newMovie, function(err, doc) {
     if (err) {

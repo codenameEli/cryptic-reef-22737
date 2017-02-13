@@ -1,25 +1,27 @@
-<div *ngIf="movie" class="row">
-  <div class="col-md-12">
-    <h2 *ngIf="movie._id">Movie Details</h2>
-    <h2 *ngIf="!movie._id">New Movie</h2>
-  </div>
-</div>
-<div *ngIf="movie" class="row">
-  <form class="col-md-12">
-    <div class="form-group">
-      <label for="movie-title">Title</label>
-      <input class="form-control" name="movie-title" [(ngModel)]="movie.title" placeholder="Title"/>
-    </div>
-    <div class="form-group">
-      <label for="movie-overview">Overview</label>
-      <input class="form-control" name="movie-overview" [(ngModel)]="movie.overview" placeholder="Overview"/>
-    </div>
-    <div class="form-group">
-      <label for="movie-rating">Rating</label>
-      <input class="form-control" name="movie-rating" [(ngModel)]="movie.rating" placeholder="1"/>
-    </div>
-    <button class="btn btn-primary" *ngIf="!movie._id" (click)="createMovie(movie)">Create</button>
-    <button class="btn btn-info" *ngIf="movie._id" (click)="updateMovie(movie)">Update</button>
-    <button class="btn btn-danger" *ngIf="movie._id" (click)="deleteMovie(movie._id)">Delete</button>
-  </form>
-</div>
+<md-card *ngIf="movie">
+  <md-card-header>
+    <md-card-title *ngIf="movie._id">Movie Details</md-card-title>
+    <md-card-title *ngIf="!movie._id">Add New Movie</md-card-title>
+  </md-card-header>
+  <md-card-content>
+    <md-input-container>
+      <input md-input type="text" placeholder="Title" name="movie-title" [(ngModel)]="movie.title">
+    </md-input-container>
+    <md-input-container>
+      <input md-input maxlength="4" placeholder="Year Released" name="movie-released" [(ngModel)]="movie.released">
+    </md-input-container>
+    <md-radio-group class="example-radio-group" [(ngModel)]="movie.rating">
+      <h5>Rating</h5>
+      <md-radio-button [value]="1">1</md-radio-button>
+      <md-radio-button [value]="2">2</md-radio-button>
+      <md-radio-button [value]="3">3</md-radio-button>
+      <md-radio-button [value]="4">4</md-radio-button>
+      <md-radio-button [value]="5">5</md-radio-button>
+    </md-radio-group>
+  </md-card-content>
+  <md-card-actions>
+    <button md-raised-button *ngIf="!movie._id" (click)="createMovie(movie)">Create</button>
+    <button md-raised-button *ngIf="movie._id" (click)="updateMovie(movie)">Update</button>
+    <button md-raised-button *ngIf="movie._id" (click)="deleteMovie(movie._id)">Delete</button>
+  </md-card-actions>
+</md-card>

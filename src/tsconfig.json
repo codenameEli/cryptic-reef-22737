@@ -2,6 +2,11 @@
   "compilerOptions": {
     "baseUrl": "",
     "declaration": false,
+    "compilerOptions": {
+      "types": [
+        "hammerjs"
+      ]
+    },
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],

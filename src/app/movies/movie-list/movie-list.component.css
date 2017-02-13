@@ -1,0 +1,13 @@
+md-list-item {
+  cursor: pointer;
+}
+
+md-list-item.active {
+  background-color: #f9f9f9;
+}
+
+md-card-actions button {
+  position: absolute;
+  bottom: 30px;
+  right: 37px;
+}

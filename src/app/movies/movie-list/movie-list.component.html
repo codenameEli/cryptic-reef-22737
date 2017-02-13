@@ -1,21 +1,33 @@
-<div class="row">
-  <div class="col-md-5">
-    <h2>Contacts</h2>
-    <ul class="list-group">
-      <li class="list-group-item"
-          *ngFor="let movie of movies"
-          >
-        {{movie.title}}
-      </li>
-    </ul>
-    <button class="btn btn-warning" (click)="createNewMovie()">New</button>
-  </div>
-  <div class="col-md-5 col-md-offset-2">
-    <movie-details
-      [movie]="selectedMovie"
-      [createHandler]="addMovie"
-      [updateHandler]="updateMovie"
-      [deleteHandler]="deleteMovie">
-    </movie-details>
-  </div>
-</div>
+<md-card>
+  <md-card-content>
+    <h2>Movies</h2>
+    <md-input-container>
+      <input md-input type="search" #searchInput placeholder="Search..." name="search" [(ngModel)]="title" (input)="filterMovies(searchInput.value)">
+    </md-input-container>
+    <md-list>
+      <md-list-item
+        *ngFor="let movie of filteredMovies"
+        (click)="selectMovie(movie)"
+        [class.active]="movie === selectedMovie">
+        <md-icon md-list-avatar>movie</md-icon>
+        <h4 md-line>{{movie.title}}</h4>
+        <p md-line> {{movie.released}}</p>
+        <span md-line *ngIf="movie.rating === 1"><md-icon>stars</md-icon></span>
+        <span md-line *ngIf="movie.rating === 2"><md-icon>stars</md-icon><md-icon>stars</md-icon></span>
+        <span md-line *ngIf="movie.rating === 3"><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon></span>
+        <span md-line *ngIf="movie.rating === 4"><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon></span>
+        <span md-line *ngIf="movie.rating === 5"><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon><md-icon>stars</md-icon></span>
+      </md-list-item>
+    </md-list>
+    <md-card-actions>
+      <button md-fab (click)="createNewMovie()"><md-icon>add</md-icon></button>
+    </md-card-actions>
+  </md-card-content>
+</md-card>
+
+<movie-details
+[movie]="selectedMovie"
+[createHandler]="addMovie"
+[updateHandler]="updateMovie"
+[deleteHandler]="deleteMovie">
+</movie-details>

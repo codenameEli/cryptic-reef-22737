@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
 import { MovieService } from '../movie.service';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -13,12 +12,25 @@ import 'rxjs/add/operator/map';
 export class MovieListComponent implements OnInit {
 
   movies: Movie[];
+  filteredMovies: Movie[];
   selectedMovie: Movie;
 
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
     this.getMovies();
+  }
+
+  filterMovies(value) {
+    if ( ! value ) {
+      this.filteredMovies = this.movies;
+    }
+    else {
+      this.filteredMovies = Object.assign([], this.movies).filter(
+        movie => movie.title.toLowerCase().indexOf(value.toLowerCase()) > -1
+      )
+    }
+
   }
 
   getMovies() {
@@ -28,6 +40,7 @@ export class MovieListComponent implements OnInit {
         this.movies = movies.map((movie) => {
           return movie;
         });
+        this.filteredMovies = this.movies;
       });
   }
 
@@ -45,11 +58,9 @@ export class MovieListComponent implements OnInit {
     let movie: Movie = {
       title: '',
       overview: '',
-      rating: 0
+      released: 1989,
+      rating: 1
     };
-
-    // By default, a newly-created contact will have the selected state.
-    this.selectMovie(movie);
   }
 
   deleteMovie = (id: String) => {
@@ -63,7 +74,6 @@ export class MovieListComponent implements OnInit {
 
   addMovie = (movie: Movie) => {
     this.movies.push(movie);
-    this.selectMovie(movie);
     return this.movies;
   }
 
@@ -71,7 +81,6 @@ export class MovieListComponent implements OnInit {
     let idx = this.getIndexOfMovie(movie._id);
     if (idx !== -1) {
       this.movies[idx] = movie;
-      this.selectMovie(movie);
     }
     return this.movies;
   }

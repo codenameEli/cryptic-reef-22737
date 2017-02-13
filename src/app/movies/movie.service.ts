@@ -9,7 +9,7 @@ export class MovieService {
 
   constructor (private http: Http) {}
 
-  // get("/api/contacts")
+  // get("/api/movies")
   getMovies(): Promise<Movie[]> {
     return this.http.get(this.endpoint)
       .toPromise()
@@ -25,9 +25,9 @@ export class MovieService {
       .catch(this.handleError);
   }
 
-  // get("/api/contacts/:id") endpoint not used by Angular app
+  // get("/api/movies/:id") endpoint not used by Angular app
 
-  // delete("/api/contacts/:id")
+  // delete("/api/movies/:id")
   deleteMovie(id: String): Promise<String> {
     return this.http.delete(this.endpoint + '/' + id)
       .toPromise()
@@ -35,7 +35,7 @@ export class MovieService {
       .catch(this.handleError);
   }
 
-  // put("/api/contacts/:id")
+  // put("/api/movies/:id")
   updateMovie(movie: Movie): Promise<Movie> {
     return this.http.put(`${this.endpoint}/${movie._id}`, movie)
       .toPromise()
