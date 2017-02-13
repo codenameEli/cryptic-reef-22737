@@ -1,0 +1,25 @@
+<div *ngIf="movie" class="row">
+  <div class="col-md-12">
+    <h2 *ngIf="movie._id">Movie Details</h2>
+    <h2 *ngIf="!movie._id">New Movie</h2>
+  </div>
+</div>
+<div *ngIf="movie" class="row">
+  <form class="col-md-12">
+    <div class="form-group">
+      <label for="movie-title">Title</label>
+      <input class="form-control" name="movie-title" [(ngModel)]="movie.title" placeholder="Title"/>
+    </div>
+    <div class="form-group">
+      <label for="movie-overview">Overview</label>
+      <input class="form-control" name="movie-overview" [(ngModel)]="movie.overview" placeholder="Overview"/>
+    </div>
+    <div class="form-group">
+      <label for="movie-rating">Rating</label>
+      <input class="form-control" name="movie-rating" [(ngModel)]="movie.rating" placeholder="1"/>
+    </div>
+    <button class="btn btn-primary" *ngIf="!movie._id" (click)="createMovie(movie)">Create</button>
+    <button class="btn btn-info" *ngIf="movie._id" (click)="updateMovie(movie)">Update</button>
+    <button class="btn btn-danger" *ngIf="movie._id" (click)="deleteMovie(movie._id)">Delete</button>
+  </form>
+</div>

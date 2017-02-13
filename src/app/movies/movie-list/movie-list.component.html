@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-5">
+    <h2>Contacts</h2>
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let movie of movies"
+          >
+        {{movie}}
+      </li>
+    </ul>
+    <button class="btn btn-warning" (click)="createNewMovie()">New</button>
+  </div>
+  <div class="col-md-5 col-md-offset-2">
+    <movie-details
+      [movie]="selectedMovie"
+      [createHandler]="addMovie"
+      [updateHandler]="updateMovie"
+      [deleteHandler]="deleteMovie">
+    </movie-details>
+  </div>
+</div>
