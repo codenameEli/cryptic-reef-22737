@@ -61,6 +61,9 @@ export class MovieListComponent implements OnInit {
       released: 1989,
       rating: 1
     };
+
+    // By default, a newly-created contact will have the selected state.
+    this.selectMovie(movie);
   }
 
   deleteMovie = (id: String) => {
@@ -74,6 +77,7 @@ export class MovieListComponent implements OnInit {
 
   addMovie = (movie: Movie) => {
     this.movies.push(movie);
+    this.selectMovie(movie);
     return this.movies;
   }
 
@@ -81,6 +85,7 @@ export class MovieListComponent implements OnInit {
     let idx = this.getIndexOfMovie(movie._id);
     if (idx !== -1) {
       this.movies[idx] = movie;
+      this.selectMovie(movie);
     }
     return this.movies;
   }
