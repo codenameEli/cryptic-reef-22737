@@ -16,7 +16,9 @@ Run `npm install`
 
 Run `node server.js`
 
-Open to [Localhost](http://localhost:5000)
+Open http://localhost:4200 in your browser
+
+Note: Run `ng build when you want to repackage the code for deployment`
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
