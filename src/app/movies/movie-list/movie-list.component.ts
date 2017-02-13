@@ -58,7 +58,7 @@ export class MovieListComponent implements OnInit {
     let movie: Movie = {
       title: '',
       overview: '',
-      released: 1989,
+      released: 2017,
       rating: 1
     };
 
